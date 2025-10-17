@@ -1,14 +1,10 @@
 import { useMemo, useState } from "react";
-import {
-  Container,
-  CssBaseline,
-  createTheme,
-  ThemeProvider,
-} from "@mui/material";
+import { CssBaseline, Stack, ThemeProvider } from "@mui/material";
 
 import type { Credentials } from "./components/CredentialsForm";
 import CredentialsForm from "./components/CredentialsForm";
 import Dashboard from "./pages/Dashboard";
+import theme from "./theme";
 
 /* ================================
    Tiny cookie helpers
@@ -33,13 +29,6 @@ const delCookie = (name: string): void => {
 /* ================================
    UI
 ================================ */
-
-const theme = createTheme({
-  palette: {
-    mode: "light",
-    primary: { main: "#1976d2" },
-  },
-});
 
 export default function App() {
   const [creds, setCreds] = useState<Credentials>(() => ({
@@ -67,7 +56,16 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Stack
+        sx={{
+          width: "100%",
+          height: "100%",
+          p: 1,
+          bgcolor: "background.default",
+        }}
+        alignItems="center"
+        justifyContent="center"
+      >
         {haveCreds ? (
           <Dashboard
             token={creds.token}
@@ -81,7 +79,7 @@ export default function App() {
             initialAccount={creds.accountId}
           />
         )}
-      </Container>
+      </Stack>
     </ThemeProvider>
   );
 }

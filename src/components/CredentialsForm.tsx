@@ -6,7 +6,6 @@ import {
   Stack,
   Typography,
   Link,
-  Grid,
   FormControl,
   InputLabel,
   OutlinedInput,
@@ -75,46 +74,36 @@ const CredentialsForm = ({
           </Typography>
 
           <form onSubmit={submit}>
-            <Grid container spacing={2}>
-              <Grid>
-                <FormControl fullWidth>
-                  <InputLabel htmlFor="cf-token">API Token</InputLabel>
-                  <OutlinedInput
-                    id="cf-token"
-                    type="password"
-                    value={token}
-                    onChange={onChangeToken}
-                    label="API Token"
-                    placeholder="cf-... (Bearer token)"
-                    autoComplete="off"
-                  />
-                  <FormHelperText>Stored locally as a cookie.</FormHelperText>
-                </FormControl>
-              </Grid>
-              <Grid>
-                <FormControl fullWidth>
-                  <InputLabel htmlFor="cf-account">Account ID</InputLabel>
-                  <OutlinedInput
-                    id="cf-account"
-                    value={accountId}
-                    onChange={onChangeAccount}
-                    label="Account ID"
-                    placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                    autoComplete="off"
-                  />
-                </FormControl>
-              </Grid>
-              {err && (
-                <Grid>
-                  <Typography color="error">{err}</Typography>
-                </Grid>
-              )}
-              <Grid>
-                <Button variant="contained" type="submit">
-                  Save & Continue
-                </Button>
-              </Grid>
-            </Grid>
+            <Stack gap={2}>
+              <FormControl fullWidth>
+                <InputLabel htmlFor="cf-account">Account ID</InputLabel>
+                <OutlinedInput
+                  id="cf-account"
+                  value={accountId}
+                  onChange={onChangeAccount}
+                  label="Account ID"
+                  placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                  autoComplete="off"
+                />
+              </FormControl>
+              <FormControl fullWidth>
+                <InputLabel htmlFor="cf-token">API Token</InputLabel>
+                <OutlinedInput
+                  id="cf-token"
+                  type="password"
+                  value={token}
+                  onChange={onChangeToken}
+                  label="API Token"
+                  placeholder="cf-... (Bearer token)"
+                  autoComplete="off"
+                />
+                <FormHelperText>Stored locally as a cookie.</FormHelperText>
+              </FormControl>
+              {err && <Typography color="error">{err}</Typography>}
+              <Button variant="contained" type="submit">
+                Save & Continue
+              </Button>
+            </Stack>
           </form>
         </Stack>
       </CardContent>

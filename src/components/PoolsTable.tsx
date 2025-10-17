@@ -64,7 +64,7 @@ function PoolsTable({ pools }: PoolsTableProps) {
               return (
                 <TableRow key={p.id}>
                   <TableCell>
-                    <Stack spacing={0.5}>
+                    <Stack gap={0.5}>
                       <Typography variant="subtitle1">{p.name}</Typography>
                       {p.description && (
                         <Typography variant="body2" color="text.secondary">
@@ -80,7 +80,7 @@ function PoolsTable({ pools }: PoolsTableProps) {
                     <StatusChip value={poolHealthy} />
                   </TableCell>
                   <TableCell>
-                    <Stack spacing={1}>
+                    <Stack gap={1}>
                       {origins.length === 0 && (
                         <Typography variant="body2" color="text.secondary">
                           No origins defined
@@ -90,8 +90,9 @@ function PoolsTable({ pools }: PoolsTableProps) {
                         <Stack
                           key={`${o.name || o.address || i}-${i}`}
                           direction="row"
-                          spacing={1}
+                          gap={1}
                           alignItems="center"
+                          justifyContent="space-between"
                         >
                           <Typography sx={{ minWidth: 220 }}>
                             {(o.name || o.address || "origin") +
